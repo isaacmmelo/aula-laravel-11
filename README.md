@@ -34,12 +34,8 @@
 
 [Laravel](https://laravel.com/) é um framework PHP que facilita o desenvolvimento web com uma sintaxe elegante e expressiva. Ele oferece recursos como roteamento simples, injeção de dependência, migrações de banco de dados, e o Eloquent ORM para interagir com bancos de dados de forma intuitiva. Além disso, possui ferramentas integradas para autenticação, autorização, filas de trabalho e eventos em tempo real. O ecossistema Laravel inclui o Laravel Breeze para autenticação básica, Laravel Forge para gerenciamento de servidores, e Laravel Vapor para implantação serverless. Com uma [documentação](https://laravel.com/docs/11.x) extensa e uma comunidade ativa, Laravel é uma excelente escolha para desenvolvedores que buscam produtividade e flexibilidade.
 
-> [!IMPORTANT]
-> Key information users need to know to achieve their goal.
-
-> [!IMPORTANT]
->[📙 Documentação do laravel](https://laravel.com/docs/11.x)
- <br/> O laravel é famoso por sua documentação, ela é bem completa e te prepara para todo o processo de desenvolvimento. Todo o curso é baseado na documentação oficial do laravel, os links de cada parte será deixado para conferências e acompanhamento.
+> [!IMPORTANT] [📙 Documentação do laravel](https://laravel.com/docs/11.x)
+> O laravel é famoso por sua documentação, ela é bem completa e te prepara para todo o processo de desenvolvimento. Todo o curso é baseado na documentação oficial do laravel, os links de cada parte será deixado para conferências e acompanhamento.
 
 Há três ferramentas que podem ser destacadas no Laravel: Eloquente Model, Artisan e Migrations.
 
