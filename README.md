@@ -2,112 +2,68 @@
  <img width=200px height=200px src="readmeImages/LogoIsaac.jpeg" alt="Prof. Isaac mendes">
 </p>
 <h2 align="center">Laravel para iniciantes</h2>
-<h4 align="center">Este tutorial é perfeito para você começar! Vamos guiá-lo passo a passo na criação de um projeto do zero. Utilizaremos o <a href='https://herd.laravel.com/windows'>Laravel Breeze</a> como pacote inicial e implementaremos uma gestão completa de usuários no Laravel 11.</h4>
 
 <div align="center">
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/isaacmmelo/aula-laravel-11/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/isaacmmelo/aula-laravel-11/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+[![Status](https://img.shields.io/badge/status-active-success.svg)](#)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](#)
 
 </div>
 
 ---
 
-<p align="center"> Few lines describing your project.
+<p align="center"> Este tutorial é perfeito para você começar! Vamos guiá-lo passo a passo na criação de um projeto do zero. Utilizaremos o <a href='https://herd.laravel.com/windows'>Laravel Breeze</a> como pacote inicial e implementaremos uma gestão completa de usuários no Laravel 11.
     <br> 
 </p>
 
-## 📝 Table of Contents
+## 📝 Conteúdo
 
-- [About](#about)
-- [Getting Started](#getting_started)
-- [Deployment](#deployment)
-- [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
+- [Entendendo o Laravel](#laravel)
+- [Configurando o Ambiente](#ambiente)
+- [Laravel Breeze](#breeze)
+- [Banco de Dados e Migrations](#migrations)
+- [Model, View e Controller (MVC)](#mvc)
+- [Rotas](#routes)
+- [Construindo o CRUD de usuários](#crud)
 
-## 🧐 About <a name = "about"></a>
+### Links Importantes
+>[Documentação do laravel](https://laravel.com/docs/11.x)
+ <br/> Todo o curso é baseado na documentação oficial do laravel, os links de cada parte será deixado para conferências, acompanhamento e dúvidas.
 
-Write about 1-2 paragraphs describing the purpose of your project.
+>[Utilize o Laravel Herd como ambiente](https://herd.laravel.com/windows)
+ <br/> O Heard é um abiente próprio do Laravel e tem como objetivo padronizar o ambiente de desenvolvimento. É de fácil instalação e configuração.
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+>[Utilize Docker como ambiente](https://github.com/especializati/setup-docker-laravel)
+ <br/> O pessoal da <i>EspecializaTI<i> tem um stup complet de docker para o lavarel, é só seguir as dicas e configurar o seu ambiente utilizando docker.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+## 🧐 Entendendo o Laravel <a name = "laravel"></a>
 
-### Prerequisites
+lorem ispum
 
-What things you need to install the software and how to install them.
+## 🔧 Configurando o Ambiente com Herd e Docker para o Banco de Dados<a name = "ambiente"></a>
 
-```
-Give examples
-```
+lorem ispum
 
-### Installing
+## 🔏 Laravel Breeze <a name = "breeze"></a>
 
-A step by step series of examples that tell you how to get a development env running.
+lorem ispum
 
-Say what the step will be
+## 💽 Banco de Dados e Migrations <a name="usage"></a>
 
-```
-Give the example
-```
+lorem ispum
 
-And repeat
+## 📚 Model, View e Controller (MVC) <a name = "mvc"></a>
 
-```
-until finished
-```
+lorem ispum
 
-End with an example of getting some data out of the system or using it for a little demo.
+## 🚅 Rotas <a name = "routes"></a>
 
-## 🔧 Running the tests <a name = "tests"></a>
+lorem ispum
 
-Explain how to run the automated tests for this system.
+## ⛏️ Construindo o CRUD de usuários <a name = "crud"></a>
 
-### Break down into end to end tests
+lorem ispum
 
-Explain what these tests test and why
+## ✍️ Autor
 
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## 🎈 Usage <a name="usage"></a>
-
-Add notes about how to use the system.
-
-## 🚀 Deployment <a name = "deployment"></a>
-
-Add additional notes about how to deploy this on a live system.
-
-## ⛏️ Built Using <a name = "built_using"></a>
-
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
-
-## ✍️ Authors <a name = "authors"></a>
-
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
-
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
-
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+- [@isaacmmelo](https://github.com/isaacmmelo) - Professor Especialista Isaac Mendes de Melo
