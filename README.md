@@ -271,7 +271,7 @@ As factories são utilizadas para criar modelos de forma mais rápida. Elas são
 
 Exemplo de uso de um factory para criar 1000 usuários de uma vez:
 <br/>
-<img width=400px src="readmeImages/migrationsOkArticles" alt="Migrations executadas">
+<img width=400px src="readmeImages/migrationsOkArticles.png" alt="Migrations executadas">
 <br/>
 
 ```bash
