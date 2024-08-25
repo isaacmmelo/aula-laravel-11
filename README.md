@@ -268,6 +268,9 @@ public function down(): void {
         });
     }
 ```
+> [!NOTE]
+> Para o soft delete funcionar, deve também adicionar a configuração de soft delete no modelo, como abordaremos logo abaixo.
+
 Após finalizar a criação das migrations, podemos executar o comando ´php artisan migrate´ para executar as migrations e criar as novas tabelas no banco de dados.
 <br/>
 <img width=400px src="readmeImages/migrationsOkArticles.png" alt="Migrations executadas">
@@ -306,7 +309,7 @@ MVC é um padrão arquitetural que separa uma aplicação em três camadas: Mode
 
 ### Criando e configurando modelos
 
-Para [criar modelos](https://laravel.com/docs/11.x/eloquent#generating-model-classes, basta utilizarmos o comando `php artisan make:model NomeDoModelo`.
+Para [criar modelos](https://laravel.com/docs/11.x/eloquent#generating-model-classes), basta utilizarmos o comando `php artisan make:model NomeDoModelo`.
 
 ````bash
 php artisan make:model Article
@@ -328,17 +331,106 @@ class Article extends Model
 
 }
 ```
-Adicionando o SoftDeletes e os campos fillable, o nosso model está pronto para ser usado. Após isso, o Eloquent do laravel consegue fazer todas as operações do banco de dados automaticamente.
+Adicionando o *SoftDeletes* e os campos *fillable*, o nosso model está pronto para ser usado. 
+
+Após isso, o Eloquent do laravel consegue fazer todas as operações do banco de dados automaticamente.
+
 > [!NOTE]
-> Para o soft delete funcionar, deve também adicionar o campo ´$table->SoftDeletes()´ na migration referente ao modelo.;
+> Para o soft delete funcionar, deve também adicionar o campo ***$table->SoftDeletes()*** na migration referente ao modelo.
 
 ### Criando e configurando controles
 
+Para [criar controles](https://laravel.com/docs/11.x/controllers#creating-controllers), basta utilizarmos o comando `php artisan make:controller NomeDoController`.
+
+````bash
+php artisan make:controller Admin/ArticleController
+````
+
+Com este comando criamos o controller de [Artigos](app/Http/Controllers/Admin/ArticleController.php);
+````php
+class ArticleController extends Controller
+{
+    # Implementa função que retorna a View Index
+    public function index() {
+
+    }
+
+    # Implementa função que retorna a View Create
+    public function create() {
+
+    }
+
+    # Implementa função que salva os dados
+    public function store(Request $request) {
+
+    }
+}
+````
+A implementação das funções acimas será feita no tópico [Construindo o CRUD de usuários](#crud).
+
 ### Criando e configurando views
+
+Por fim, para [criar views](https://laravel.com/docs/11.x/views#creating-views), basta utilizarmos o comando `php artisan make:view NomeDaView`, a view será criada em [resources/views](resources/views).
+
+Por padrão, em um CRUD simples utilizamos 04 views:
+````bash
+php artisan make:View admin/articles/index
+php artisan make:View admin/articles/show
+php artisan make:View admin/articles/edit
+php artisan make:View admin/articles/create
+````
+A implementação das views será feita no tópico [Construindo o CRUD de usuários](#crud).
 
 ## 🚅 Rotas <a name = "routes"></a>
 
-lorem ispum
+No Laravel, as [rotas](https://laravel.com/docs/11.x/routing) são responsáveis por direcionar as solicitações HTTP para as ações apropriadas dentro da aplicação. Elas estabelecem a conexão entre URLs específicas e os controladores que processam essas solicitações.
+
+As rotas são implementadas em [routes/web.php](routes/web.php).
+
+Para criar uma rota, passamos `ROUTE::método(rota, função)->nome`, por exemplo:
+````php
+# Cria uma rota chamada saudação, que retorna a frase Hello World
+Route::get('/saudacao', function () {
+    return 'Hello World';
+});
+````
+<br/>
+<img width=400px src="readmeImages/HelloWorld.png" alt="Route Hello World">
+<br/>
+
+Podemos também chamar um controlle dentro de uma rota, o que é a abordagem mais comum:
+
+````php
+Route::get('/saudacao', [ArticleController::class, 'index'])->name('saudacao');
+````
+No [controller](app/Http/Controllers/Admin/ArticleController.ph) implementamos o retorno da rota:
+
+````php
+public function index() {
+    return 'Hello World';
+}
+````
+<br/>
+<img width=400px src="readmeImages/HelloWorld2.png" alt="Route Hello World Controller">
+<br/>
+
+Uma outra opção é retornar uma view, implementamos no [controller](app/Http/Controllers/Admin/ArticleController.ph): 
+
+````php
+public function index() {
+    return view('admin.articles.index');
+}
+````
+E na [view](resources/views/admin/articles/index.blade.php), implementamos o que deseamos mostrar para o usuário:
+
+````php
+<div>
+    <h1 class="text-3xl">Retorno da view pelo controller</h1>
+</div>
+````
+<br/>
+<img width=400px src="readmeImages/HelloWorld3.png" alt="Retorno da view pelo controller">
+<br/>
 
 ## ⛏️ Construindo o CRUD de usuários <a name = "crud"></a>
 
@@ -387,3 +479,19 @@ go to model and update
 
 -- validações
 -- template
+
+
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.

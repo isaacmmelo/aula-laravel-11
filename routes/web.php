@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,9 @@ Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('user.edi
 Route::post('users', [UserController::class, 'store'])->name('user.store');
 Route::get('users/create', [UserController::class, 'create'])->name('user.create');
 Route::get('users', [UserController::class, 'index'])->name('user.index');
+
+Route::get('/saudacao', [ArticleController::class, 'index'])->name('saudacao');
+
 
 Route::get('/', function () {
     return view('welcome');
