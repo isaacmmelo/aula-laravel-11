@@ -24,7 +24,7 @@
 - [Entendendo o Laravel](#Laravel)
 - [Configurando o Ambiente](#ambiente)
 - [Laravel Breeze](#breeze)
-- [Banco de Dados e Migrations](#migrations)
+- [Banco de Dados e Migrations](#migrationsbd)
 - [Model, View e Controller (MVC)](#mvc)
 - [Rotas](#routes)
 - [Construindo o CRUD de usuários](#crud)
@@ -180,7 +180,7 @@ Após a execução das migrations, ao abrir o site, poderá ver que temos a opç
 <br/>
 Agora você pode testar o Breeze e criar novos usuários.
 
-## 💽 Banco de Dados e Migrations <a name="usage"></a>
+## 💽 Banco de Dados e Migrations <a name="migrationsbd"></a>
 
 As migrations são uma parte fundamental do Laravel, e são responsáveis por definir e alterar o esquema do banco de dados. Com o comando `php artisan migrate` podemos criar o banco de dados e as tabelas necessárias para o nosso projeto.
 
@@ -261,7 +261,10 @@ public function down(): void {
     }
 ```
 Após finalizar a criação das migrations, podemos executar o comando ´php artisan migrate´ para executar as migrations e criar as novas tabelas no banco de dados.
-
+<br/>
+<img width=400px src="readmeImages/migrationsOkArticles.png" alt="Migrations executadas">
+<br/>
+Se tudo foi feito corretamente a tabela de Articles irá aparecer no seu banco de dados.
 
 ### Seeders e Factory
 
@@ -269,16 +272,18 @@ Os seeders são utilizados para popular o banco de dados com dados de teste ou d
 
 As factories são utilizadas para criar modelos de forma mais rápida. Elas são definidas em arquivos PHP na pasta [database/factories](database/factories) do projeto. Elas são utilizadas pelo comando `factory()` do Laravel, que permite criar modelos de forma mais rápida e eficiente.
 
+Abrindo o arquivo de [UserFactory](database/factories/UserFactory.php), podemos ver as configurações definidas para o factory criar os dados de forma automática.
+
 Exemplo de uso de um factory para criar 1000 usuários de uma vez:
-<br/>
-<img width=400px src="readmeImages/migrationsOkArticles.png" alt="Migrations executadas">
-<br/>
 
 ```bash
 php artisan thinker #Este comando irá entrar no utilitário Thinker do laravel
 \App\Models\User::factory()->count(100)->create(); #Após isso execute o comando para criar os 1000 usuários utilizando factory
 ```
-Abrindo o arquivo de [UserFactory](database/factories/UserFactory.php), podemos ver as configurações definidas para o factory criar os dados de forma automática.
+Após rodar o comando a tabela deve ser populada com os registros
+<br/>
+<img width=400px src="readmeImages/factory1000Ok.png" alt="Migrations executadas">
+<br/>
 
 ## 📚 Model, View e Controller (MVC) <a name = "mvc"></a>
 
