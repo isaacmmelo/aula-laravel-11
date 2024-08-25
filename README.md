@@ -151,19 +151,34 @@ DB_PASSWORD=123
 ```
 
 ## 🔏 Laravel Breeze <a name = "breeze"></a>
+O Laravel Breeze é um pacote de autenticação para o framework Laravel. Ele oferece uma implementação simples e completa de funcionalidades de autenticação, como login, registro, redefinição de senha, verificação de e-mail e confirmação de senha.
 
+Para instalar o Breeze primeiro é necessário instalar o composer e executar o seguinte comando, que irá baixar o breeze para seu composer local:
 ```bash
 composer require Laravel/breeze
+```
+Depois é necessário executar o seguinte comando para instalar o breeze no seu projeto:
 
-php artisan breeze:install
-
+```bash
 php artisan breeze:install blade --dark --pest
+```
+> [!NOTE]
+> Este comando irá instalar o breeze com o blade, tema escuro e o pacote de testes. Caso queira com outras configurções, execute o comando sem os parâmetros após o :install
 
+Após a instalção do breeze no seu projeto, iremos executar o seguinte comando para criar o banco de dados e as tabelas necessárias:
+
+```bash
 php artisan migrate
 ```
 
+> [!NOTE]
+> Tenha certeza que o banco de dados está inicializado e com as configurações no .env corretas, de acordo com o tópico anterior.
+
+Após a execução das migrations, ao abrir o site, poderá ver que temos a opção de login e registro, o que significa que o Breeze está instalado corretadamente.
 <br/>
 <img width=400px src="readmeImages/breezeOk.png" alt="Breeze instalado">
+<br/>
+Agora você pode testar o Breeze e criar novos usuários.
 
 ## 💽 Banco de Dados e Migrations <a name="usage"></a>
 
