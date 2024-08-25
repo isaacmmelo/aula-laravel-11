@@ -182,7 +182,99 @@ Agora você pode testar o Breeze e criar novos usuários.
 
 ## 💽 Banco de Dados e Migrations <a name="usage"></a>
 
-lorem ispum
+As migrations são uma parte fundamental do Laravel, e são responsáveis por definir e alterar o esquema do banco de dados. Com o comando `php artisan migrate` podemos criar o banco de dados e as tabelas necessárias para o nosso projeto.
+
+As migrations são arquivos PHP que contém as instruções para criar e alterar o banco de dados. Eles estão localizados na pasta [database/migrations](database/migrations) do nosso projeto. Quando executamos o comando de migrate, o Laravel irá ler todos os arquivos de migrations e executá-los na ordem em que estão armazenados.
+
+Cada arquivo de migrations possui uma data e hora de criação, e eles são armazenados no banco de dados na tabela `migrations`. Com isso, o Laravel pode controlar quais arquivos de migrations já foram executados e quais ainda não foram.
+
+Com as migrations, podemos criar e alterar o banco de dados de forma controlada, e compartilhar o esquema do banco de dados com a equipe de desenvolvimento, sem preocupações de diferenças nos ambientes.
+
+Podemos ver alguns comandos do artisan reslocinados a migration ao digitar `php artisan list` e ir na seação do comando migrate:
+
+```
+ migrate
+  migrate:fresh             Drop all tables and re-run all migrations
+  migrate:install           Create the migration repository
+  migrate:refresh           Reset and re-run all migrations
+  migrate:reset             Rollback all database migrations
+  migrate:rollback          Rollback the last database migration
+  migrate:status            Show the status of each migration
+```
+
+### Criando tabelas com Migrate
+Para criar tabelas no Laravel, primeiro precisamos criar uma nova migrate. Para isso, basta digitar o comando:
+```bash
+php artisan make:migration create_articles_table
+```
+Após isso, uma migrate será criada na pasta [database/migrations](database/migrations) do nosso projeto. Abrindo o arquivo podemos ver a estrutura de uma migrate, com duas funções:
+
+#### Função UP
+Esta função será executada todas as vezes que utilizarmos o comando ´php artisan:migrate´ e ela irá criar a tabela no banco de dados.
+```php
+public function up(): void
+    {
+        Schema::create('articles', function (Blueprint $table) {
+            #Aqui podemos adicionar os campos da tabela, como por exemplo o assunto, texto, etc.
+            $table->id();
+            $table->timestamps();
+            $table->string('título',100)->index()->unique();
+            #Utilizamos $table->tipo do campo, logo apos o nome, tamanho e após isso as especificações do campo.
+            $table->text('texto',1000)->nullable();
+            $table->integer('autor')->index()->nullable();
+            #Podemos também definir o relacionamento com a tabela de usuários
+            $table->foreign('autor')->references('id')->on('users')->onDelete('set null');
+        });
+    }
+```
+
+### Função Down
+Esta função será executada quando o comando ´php artisan migrate:rollback´ for executado. Ela irá apagar a tabela no banco de dados.
+```php
+    public function down(): void
+    {
+        Schema::dropIfExists('articles');
+    }
+```
+
+### Atualizando tabelas com Migrate
+Para atualizar tabelas, podemos criar uma nova migrate e alterar uma tabela existente.
+```bash
+php artisan make:migration update_articles_table
+```
+Nela, basta adicionarmos o que queremos alterar na tabela.
+```php
+public function up(): void {
+    Schema::table('articles', function (Blueprint $table) {
+        $table->string('tags')->nullable();
+        $table->softDeletes();
+    });
+}
+```
+Não podemos esquecer da função de down para deletar a tabela em um rollback:
+```php
+public function down(): void {
+        Schema::table('articles', function (Blueprint $table) {
+            $table->dropColumn('tags');
+            $table->dropSoftDeletes();
+        });
+    }
+```
+
+
+### Seeders e Factory
+
+Os seeders são utilizados para popular o banco de dados com dados de teste ou dados de exemplo. Eles são arquivos PHP que contém uma classe com o método `run()`, onde é definido o que deve ser populado no banco de dados. Como exemplo temos o arquivo [DatabaseSeeder](database/seeders/DatabaseSeeder.php).  Os seeders são executados com o comando `php artisan db:seed`. Ele irá executar todos os seeders que estiverem na pasta [database/seeders](database/seeders) do projeto.
+
+As factories são utilizadas para criar modelos de forma mais rápida. Elas são definidas em arquivos PHP na pasta [database/factories](database/factories) do projeto. Elas são utilizadas pelo comando `factory()` do Laravel, que permite criar modelos de forma mais rápida e eficiente.
+
+Exemplo de uso de um factory para criar 1000 usuários de uma vez:
+
+```bash
+php artisan thinker #Este comando irá entrar no utilitário Thinker do laravel
+\App\Models\User::factory()->count(100)->create(); #Após isso execute o comando para criar os 1000 usuários utilizando factory
+```
+Abrindo o arquivo de [UserFactory](database/factories/UserFactory.php), podemos ver as configurações definidas para o factory criar os dados de forma automática.
 
 ## 📚 Model, View e Controller (MVC) <a name = "mvc"></a>
 
