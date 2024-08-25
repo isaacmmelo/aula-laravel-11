@@ -25,6 +25,10 @@
 - [Model, View e Controller (MVC)](#mvc)
 - [Rotas](#routes)
 - [Construindo o CRUD de usuários](#crud)
+- [Validação](#validacao)
+- [Blade Template](#blade)
+- [Middlewares](#middlewares)
+- [Autorizações - ACL](#acl)
 
 ### Links Importantes
 >[Documentação do laravel](https://laravel.com/docs/11.x)
@@ -61,6 +65,22 @@ lorem ispum
 lorem ispum
 
 ## ⛏️ Construindo o CRUD de usuários <a name = "crud"></a>
+
+lorem ispum
+
+## 👍 Validação <a name = "validacao"></a>
+
+lorem ispum
+
+## 👍 Blade Template <a name = "blade"></a>
+
+lorem ispum
+
+## 👍 Middlewares <a name = "middlewares"></a>
+
+lorem ispum
+
+## 👍 Autorizações - ACL <a name = "acl"></a>
 
 lorem ispum
 
