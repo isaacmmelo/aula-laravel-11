@@ -30,23 +30,68 @@
 - [Middlewares](#middlewares)
 - [Autorizações - ACL](#acl)
 
-### Links Importantes
->[Documentação do laravel](https://laravel.com/docs/11.x)
- <br/> Todo o curso é baseado na documentação oficial do laravel, os links de cada parte será deixado para conferências, acompanhamento e dúvidas.
-
->[Utilize o Laravel Herd como ambiente](https://herd.laravel.com/windows)
- <br/> O Heard é um abiente próprio do Laravel e tem como objetivo padronizar o ambiente de desenvolvimento. É de fácil instalação e configuração.
-
->[Utilize Docker como ambiente](https://github.com/especializati/setup-docker-laravel)
- <br/> O pessoal da <i>EspecializaTI<i> tem um stup complet de docker para o lavarel, é só seguir as dicas e configurar o seu ambiente utilizando docker.
-
 ## 🧐 Entendendo o Laravel <a name = "laravel"></a>
 
-lorem ispum
+[Laravel](https://laravel.com/) é um framework PHP que facilita o desenvolvimento web com uma sintaxe elegante e expressiva. Ele oferece recursos como roteamento simples, injeção de dependência, migrações de banco de dados, e o Eloquent ORM para interagir com bancos de dados de forma intuitiva. Além disso, possui ferramentas integradas para autenticação, autorização, filas de trabalho e eventos em tempo real. O ecossistema Laravel inclui o Laravel Breeze para autenticação básica, Laravel Forge para gerenciamento de servidores, e Laravel Vapor para implantação serverless. Com uma [documentação](https://laravel.com/docs/11.x) extensa e uma comunidade ativa, Laravel é uma excelente escolha para desenvolvedores que buscam produtividade e flexibilidade.
 
-## 🔧 Configurando o Ambiente com Herd e Docker para o Banco de Dados<a name = "ambiente"></a>
+>[📙 Documentação do laravel](https://laravel.com/docs/11.x)
+ <br/> O laravel é famoso por sua documentação, ela é bem completa e te prepara para todo o processo de desenvolvimento. Todo o curso é baseado na documentação oficial do laravel, os links de cada parte será deixado para conferências e acompanhamento.
 
-lorem ispum
+Há três ferramentas que podem ser destacadas no Laravel: Eloquente Model, Artisan e Migrations.
+
+### [Eloquente Model](https://laravel.com/docs/11.x/eloquent)
+O Eloquent é o ORM (Object-Relational Mapper) do Laravel, que facilita a interação com bancos de dados. Cada tabela do banco de dados tem um modelo correspondente que permite realizar operações como inserção, atualização, exclusão e consulta de registros de forma intuitiva. O Eloquent utiliza uma sintaxe expressiva, tornando o código mais legível e fácil de manter. Por exemplo, o código abaixo salva um registro no banco de dados:
+
+```php
+$article = Article::create(['title' => 'Traveling to Europe']);
+```
+### [Artisan Console](https://laravel.com/docs/11.x/artisan)
+O Artisan é a interface de linha de comando do Laravel, que oferece diversos comandos úteis para agilizar o desenvolvimento. Com o Artisan, você pode criar modelos, controladores, migrações, entre outros. Ele também permite executar tarefas como limpar o cache, rodar testes e agendar comandos. Um exemplo de comando Artisan para criar um modelo e logo após como iniciar um servidor local diretamente pelo artisan:
+```bash
+php artisan make:model NomeDoModelo
+
+php artisan serve
+```
+
+### [Migrations](https://laravel.com/docs/11.x/migrations)
+As migrations no Laravel funcionam como um controle de versão para o banco de dados, permitindo que você defina e compartilhe a estrutura do banco de dados da aplicação. Elas são especialmente úteis para equipes de desenvolvimento, pois garantem que todos estejam usando a mesma versão do esquema do banco de dados. Abaixo um exemplo de uma tabela criada utilizando migrations:
+```php
+Schema::create('users', function (Blueprint $table) {
+    $table->id();
+    $table->string('name');
+    $table->string('email');
+    $table->timestamps();
+});
+```
+
+
+
+
+## 🔧 Configurando o Ambiente<a name = "ambiente"></a>
+
+>⚠️ IMPORTANTE ⚠️<br/><br/>
+Será ensinado como configurar o ambiente utilizando o [Laravel Herd](https://herd.laravel.com/) no Windowns. Há diversas formas de instalar e configurar o laravel, e podem ser vistas na [documentação](https://laravel.com/docs/11.x/installation). Algumas delas são descritas abaixo:
+<br/><br/> [Utilize Docker personalizado](https://github.com/especializati/setup-docker-laravel)
+<br/> O pessoal da <i>EspecializaTI<i> tem um setup complet de docker para o lavarel, é só seguir as dicas e configurar o seu ambiente utilizando docker.
+<br/><br/>[Utilize Laravel Sail](https://laravel.com/docs/11.x/sail)
+<br/> O Laravel Sail é o ambiente padrão e oficial para desenvolver Laravel utilizando Docker, pode ser seguido o passo a passo da documentação.
+<br/><br/>[PHP Composer](https://laravel.com/docs/11.x/installation#creating-a-laravel-project)
+<br/>Método mais básico, utliza o compose para baixar e instalar o Laravel na sua máquina, e pode ser criado um server local utlizando a prória ferramenta Artisand do Laravel.
+<br/><br/> [Utilize o Laravel Herd](https://herd.laravel.com/windows)
+<br/> O Heard é um abiente próprio do Laravel e tem como objetivo padronizar o ambiente de desenvolvimento. É de fácil instalação e configuração.
+
+<br/>
+
+### Laravel Herd no Windows, utilizando docker para persistir os dados
+
+Para download do Herd, prossiga até o site https://herd.laravel.com/windows e faça o download do arquivo. <br/>
+A instalação é padrão como qualquer outro aplicativo, e você não deverá ter muitos problemas.
+
+>Dica importante:
+No Windows, antes de instalar o Herd, tenha certeza de que não possue o PHP, Node e Composer instalados no seu computador. O Herd instala estas ferramentas automaticamente e configuram as variáveis de ambiente corretamente, portanto, caso já tenha instalado, poderá haver um conflito de versões.
+
+#### Criação de projetos no Herd
+ <img width=200px height=200px src="readmeImages/Herd.png" alt="Tela iniciao do Laravel Herd">
 
 ## 🔏 Laravel Breeze <a name = "breeze"></a>
 
