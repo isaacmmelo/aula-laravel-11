@@ -423,7 +423,7 @@ public function index() {
 ````
 E na [view](resources/views/admin/articles/index.blade.php), implementamos o que deseamos mostrar para o usuário:
 
-````php
+````html
 <div>
     <h1 class="text-3xl">Retorno da view pelo controller</h1>
 </div>
