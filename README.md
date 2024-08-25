@@ -72,15 +72,15 @@ lorem ispum
 
 lorem ispum
 
-## 👍 Blade Template <a name = "blade"></a>
+## 📜 Blade Template <a name = "blade"></a>
 
 lorem ispum
 
-## 👍 Middlewares <a name = "middlewares"></a>
+## 📲 Middlewares <a name = "middlewares"></a>
 
 lorem ispum
 
-## 👍 Autorizações - ACL <a name = "acl"></a>
+## 📛 Autorizações - ACL <a name = "acl"></a>
 
 lorem ispum
 
