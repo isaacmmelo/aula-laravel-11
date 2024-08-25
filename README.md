@@ -209,7 +209,18 @@ lorem ispum
 -- novo usuario
     -- erro token
 -- editar usuario
+-- mostrar usuário
 -- deletar usuario
     -- delete lógico
+php artisan make:migration AddSoftDeleteUsers
+Schema::table('users', function (Blueprint $table) {
+$table->SoftDeletes();
+});
+Schema::table('users', function (Blueprint $table) {
+$table->dropColumn('SoftDeletes');
+});
+php artisan migrate
+go to model and update
+
 -- validações
 -- template

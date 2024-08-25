@@ -12,6 +12,10 @@
 
     <a href="{{ route('user.create') }}">Adicionar Usuário</a>
 
+    @if(session()->has('message'))
+        <h3 style="color: red">{{ session()->get('message') }}</h3>
+    @endif
+
     <table>
         <thead>
         <tr>
@@ -26,7 +30,8 @@
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
-                    <a href="">Editar</a>
+                    <a href="{{route('user.edit', $user->id)}}">Editar</a>
+                    <a href="{{route('user.show', $user->id)}}">Detalhes</a>
                 </td>
             @empty
                 <tr>
