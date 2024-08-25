@@ -16,6 +16,9 @@
     <br> 
 </p>
 
+> [!IMPORTANT]
+> Para elaboração deste tutorial foi urilizado a documentação oficial do Laravel e como inspiração o curso de Laravel 11 da Especializa TI, que pode ser acessado pelo link: [Playlist Laravel  11 - Especializa TI](https://www.youtube.com/playlist?list=PLVSNL1PHDWvThyUgAgJoulpg5kB7GpYqS).
+
 ## 📝 Conteúdo
 
 - [Entendendo o Laravel](#laravel)
