@@ -87,8 +87,8 @@ Schema::create('users', function (Blueprint $table) {
 Para download do Herd, prossiga até o site https://herd.laravel.com/windows e faça o download do arquivo. <br/>
 A instalação é padrão como qualquer outro aplicativo, e você não deverá ter muitos problemas.
 
->Dica importante:
-No Windows, antes de instalar o Herd, tenha certeza de que não possue o PHP, Node e Composer instalados no seu computador. O Herd instala estas ferramentas automaticamente e configuram as variáveis de ambiente corretamente, portanto, caso já tenha instalado, poderá haver um conflito de versões.
+> [!CAUTION] 
+> No Windows, antes de instalar o Herd, tenha certeza de que não possue o PHP, Node e Composer instalados no seu computador. O Herd instala estas ferramentas automaticamente e configuram as variáveis de ambiente corretamente, portanto, caso já tenha instalado, poderá haver um conflito de versões.
 
 #### Criação de projetos no Herd
 Após a instalção do Laravel Herd, ele irá abrir na tela incial, como a figura abaixo. Nela podemos ver os serviços instalados e iniciados, e também podemos começar as configurações dos sites que o Herd gerencia, clicando na opção ***Open Sites***.<br/>
