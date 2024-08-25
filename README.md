@@ -34,6 +34,10 @@
 
 [Laravel](https://laravel.com/) é um framework PHP que facilita o desenvolvimento web com uma sintaxe elegante e expressiva. Ele oferece recursos como roteamento simples, injeção de dependência, migrações de banco de dados, e o Eloquent ORM para interagir com bancos de dados de forma intuitiva. Além disso, possui ferramentas integradas para autenticação, autorização, filas de trabalho e eventos em tempo real. O ecossistema Laravel inclui o Laravel Breeze para autenticação básica, Laravel Forge para gerenciamento de servidores, e Laravel Vapor para implantação serverless. Com uma [documentação](https://laravel.com/docs/11.x) extensa e uma comunidade ativa, Laravel é uma excelente escolha para desenvolvedores que buscam produtividade e flexibilidade.
 
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!IMPORTANT]
 >[📙 Documentação do laravel](https://laravel.com/docs/11.x)
  <br/> O laravel é famoso por sua documentação, ela é bem completa e te prepara para todo o processo de desenvolvimento. Todo o curso é baseado na documentação oficial do laravel, os links de cada parte será deixado para conferências e acompanhamento.
 
@@ -91,7 +95,11 @@ A instalação é padrão como qualquer outro aplicativo, e você não deverá t
 No Windows, antes de instalar o Herd, tenha certeza de que não possue o PHP, Node e Composer instalados no seu computador. O Herd instala estas ferramentas automaticamente e configuram as variáveis de ambiente corretamente, portanto, caso já tenha instalado, poderá haver um conflito de versões.
 
 #### Criação de projetos no Herd
- <img width=200px height=200px src="readmeImages/Herd.png" alt="Tela iniciao do Laravel Herd">
+Após a instalção do Laravel Herd, ele irá abrir na tela incial, como a figura abaixo. Nela podemos ver os serviços instalados e iniciados, e também podemos começar as configurações dos sites que o Herd gerencia, clicando na opção ***Open Sites***.<br/>
+<img width=400px src="readmeImages/Herd.png" alt="Tela iniciao do Laravel Herd">
+<br/>
+Na tela de *Sites*, podemos ver todos os sites atualmente gerenciados pelo Herd a esquerda e algumas opções de gerenciamento a direita. Para a criação de novos sites, devemos clicar no botão +Add
+
 
 ## 🔏 Laravel Breeze <a name = "breeze"></a>
 
