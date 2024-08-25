@@ -67,9 +67,6 @@ Schema::create('users', function (Blueprint $table) {
 });
 ```
 
-
-
-
 ## 🔧 Configurando o Ambiente<a name = "ambiente"></a>
 
 > [!TIP] 
@@ -434,7 +431,130 @@ E na [view](resources/views/admin/articles/index.blade.php), implementamos o que
 
 ## ⛏️ Construindo o CRUD de usuários <a name = "crud"></a>
 
-lorem ispum
+CRUD (Create, Read, Update, Delete) é um conjunto de operações básicas de gerenciamento de dados. São elas:
+
+- **Create (Criar)**: é a operação de inserção de novos registros no banco de dados.
+- **Read (Ler)**: é a operação de visualização dos dados existentes no banco de dados.
+- **Update (Atualizar)**: é a operação de alteração dos dados existentes no banco de dados.
+- **Delete (Excluir)**: é a operação de remoção de dados existentes no banco de dados.
+
+No nosso caso, para criar o CRUD de usuários, implementaremos todas essas operações, que são:
+
+- **Create (Criar)**: é a operação de inserção de novos usuários no banco de dados.
+- **Read (Ler)**: é a operação de visualização dos usuários existentes no banco de dados.
+- **Update (Atualizar)**: é a operação de alteração dos dados dos usuários existentes no banco de dados.
+- **Delete (Excluir)**: é a operação de remoção de usuários existentes no banco de dados.
+
+Para cada operação, implementaremos uma rota, um controlador e uma view.
+
+Começando, criaremos o controller de usuário:
+
+````bash
+php artisan make:Controller Admin/UserController
+````
+
+### Listando usuários
+
+Para listagem dos usuários, começaremos com a implementação da rota, no arquivo [web.php](routes/web.php):
+
+````php
+Route::get('/users', [UserController::class, 'index'])->name('users');
+````
+Implementamos o método ***index*** no [Controle de Usuários](app/Http/Controllers/Admin/UserController.php):
+
+````php
+    public function index(){
+        # Pesquisa no banco de dados todos os usuários cadastrados
+        $users = User::all();
+        
+        #Retorna uma view, com a variável com os dados dentro de um vetor utilizando o compact
+        return view('admin.users.index', compact('users'));
+    }
+````
+Agora criamos a [view de index](resources/views/admin/users/index.blade.php) para mostrar os usuários os dados selecionados do banco de dados:
+
+No controller retornamos para a view a variável users, que contém os dados do banco de dados, assim podemos usar ela para mostrar os dados na view.
+
+
+````html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários</title>
+</head>
+
+<body>
+    <h1>Usuários</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop para mostrar os dados dos usuários utilizado forelse, caso não tenha dados, mostra uma mensagem -->
+        @forelse($users as $user)
+            <tr>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
+                <td>
+                    <a href="{{route('user.edit', $user->id)}}">Editar</a>
+                    <a href="{{route('user.show', $user->id)}}">Detalhes</a>
+                </td>
+            @empty
+                <tr>
+                    <td colspan="100">Nenhum registro encontrado</td>
+                </tr>
+        @endforelse
+        </tbody>
+    </table>
+
+</body>
+
+</html>
+````
+Com isso temos a listagem de usuários, basta acessarmos a rota /users.
+
+<br/>
+<img width=400px src="readmeImages/listaUsers.png" alt="lista usuários">
+<br/>
+
+Mas temos um problema, cadastramos 1.000 usuários utilizando factory, isso é um problema no carregamento, devemos fazer uma paginação. Para quem trabalho com PHP puro, sabe o quão complicaod é fazer, mas no laravel, isso é bem simples, vejamos:
+
+### Paginação de resultados
+
+Para a paginação, precisamos alterar o método de coleta de dados no [Controle de Usuários](app/Http/Controllers/Admin/UserController.php):
+
+Atualmente temos:
+````php
+    $users = User::all();
+````
+Trocamos por:
+````php
+    #O laravel já trabalha a paginação automaticamente, nesse caso cada página terá 20 registros
+    $users = User::paginate(20);
+````
+E acrescentamos os links de paginaçao na nossa [view de index](resources/views/admin/users/index.blade.php), logo após a tabela que mostra os dados:
+
+````html
+    </table>
+
+    {{ $users->links() }}
+
+    </body>
+````
+Assim, temos:
+
+<br/>
+<img width=400px src="readmeImages/listaUsersPaginado.png" alt="Lista usuários paginados">
+<br/>
+
 
 ## 👍 Validação <a name = "validacao"></a>
 
@@ -456,8 +576,6 @@ lorem ispum
 
 - [@isaacmmelo](https://github.com/isaacmmelo) - Professor Especialista Isaac Mendes de Melo
 
--- tinker -> criar registros automaticos
-\App\Models\User::factory()->count(100)->create();  
 -- user controller
 -- index users
 -- pagination
