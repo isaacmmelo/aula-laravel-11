@@ -182,7 +182,7 @@ Agora você pode testar o Breeze e criar novos usuários.
 
 ## 💽 Banco de Dados e Migrations <a name="migrationsbd"></a>
 
-As migrations são uma parte fundamental do Laravel, e são responsáveis por definir e alterar o esquema do banco de dados. Com o comando `php artisan migrate` podemos criar o banco de dados e as tabelas necessárias para o nosso projeto.
+As [migrations](https://laravel.com/docs/11.x/migrations) são uma parte fundamental do Laravel, e são responsáveis por definir e alterar o esquema do banco de dados. Com o comando `php artisan migrate` podemos criar o banco de dados e as tabelas necessárias para o nosso projeto.
 
 As migrations são arquivos PHP que contém as instruções para criar e alterar o banco de dados. Eles estão localizados na pasta [database/migrations](database/migrations) do nosso projeto. Quando executamos o comando de migrate, o Laravel irá ler todos os arquivos de migrations e executá-los na ordem em que estão armazenados.
 
@@ -203,7 +203,7 @@ Podemos ver alguns comandos do artisan reslocinados a migration ao digitar `php 
 ```
 
 ### Criando tabelas com Migrate
-Para criar tabelas no Laravel, primeiro precisamos criar uma nova migrate. Para isso, basta digitar o comando:
+Para [criar tabelas(https://laravel.com/docs/11.x/migrations#creating-tables)] no Laravel, primeiro precisamos criar uma nova migrate. Para isso, basta digitar o comando:
 ```bash
 php artisan make:migration create_articles_table
 ```
@@ -211,6 +211,14 @@ Após isso, uma migrate será criada na pasta [database/migrations](database/mig
 
 #### Função UP
 Esta função será executada todas as vezes que utilizarmos o comando ´php artisan:migrate´ e ela irá criar a tabela no banco de dados.
+
+Nesta função, podemos adicionar os campos da tabela, como por exemplo o assunto, texto, etc.
+
+Para ver todos os tipos de campos para colunas, acesse o link: [Tipos de Colunas](https://laravel.com/docs/11.x/migrations#available-column-types)
+
+Podemos também adicionar modificadores de colunas, como o unique e nullable. Para ver todos os tipos de modificadores acesso o link: [Modificadores de Colunas](https://laravel.com/docs/11.x/migrations#modifying-columns)
+
+E para criar [chaves estrateiras](https://laravel.com/docs/11.x/migrations#foreign-key-constraints), utilizamos o próprio migration, como por exemplo o id de usuário presente no código abaixo.
 ```php
 public function up(): void
     {
@@ -238,7 +246,7 @@ Esta função será executada quando o comando ´php artisan migrate:rollback´ 
 ```
 
 ### Atualizando tabelas com Migrate
-Para atualizar tabelas, podemos criar uma nova migrate e alterar uma tabela existente.
+Para [atualizar tabelas](https://laravel.com/docs/11.x/migrations#updating-tables, podemos criar uma nova migrate e alterar uma tabela existente.
 ```bash
 php artisan make:migration update_articles_table
 ```
@@ -268,9 +276,9 @@ Se tudo foi feito corretamente a tabela de Articles irá aparecer no seu banco d
 
 ### Seeders e Factory
 
-Os seeders são utilizados para popular o banco de dados com dados de teste ou dados de exemplo. Eles são arquivos PHP que contém uma classe com o método `run()`, onde é definido o que deve ser populado no banco de dados. Como exemplo temos o arquivo [DatabaseSeeder](database/seeders/DatabaseSeeder.php).  Os seeders são executados com o comando `php artisan db:seed`. Ele irá executar todos os seeders que estiverem na pasta [database/seeders](database/seeders) do projeto.
+Os [seeders](https://laravel.com/docs/11.x/seeding) são utilizados para popular o banco de dados com dados de teste ou dados de exemplo. Eles são arquivos PHP que contém uma classe com o método `run()`, onde é definido o que deve ser populado no banco de dados. Como exemplo temos o arquivo [DatabaseSeeder](database/seeders/DatabaseSeeder.php).  Os seeders são executados com o comando `php artisan db:seed`. Ele irá executar todos os seeders que estiverem na pasta [database/seeders](database/seeders) do projeto.
 
-As factories são utilizadas para criar modelos de forma mais rápida. Elas são definidas em arquivos PHP na pasta [database/factories](database/factories) do projeto. Elas são utilizadas pelo comando `factory()` do Laravel, que permite criar modelos de forma mais rápida e eficiente.
+As [factories](https://laravel.com/docs/11.x/eloquent-factories#main-content) são utilizadas para criar modelos de forma mais rápida. Elas são definidas em arquivos PHP na pasta [database/factories](database/factories) do projeto. Elas são utilizadas pelo comando `factory()` do Laravel, que permite criar modelos de forma mais rápida e eficiente.
 
 Abrindo o arquivo de [UserFactory](database/factories/UserFactory.php), podemos ver as configurações definidas para o factory criar os dados de forma automática.
 
@@ -287,7 +295,46 @@ Após rodar o comando a tabela deve ser populada com os registros
 
 ## 📚 Model, View e Controller (MVC) <a name = "mvc"></a>
 
-lorem ispum
+
+MVC é um padrão arquitetural que separa uma aplicação em três camadas: Model, View e Controller.
+
+- Model: É a camada responsável por tratar os dados da aplicação. Ela é responsável por manipular os dados, como adicionar, atualizar, excluir e recuperar dados do banco de dados. No Laravel, os models são criados em [app/Models](app/Models). No projeto o model [User](app/Models/User.php) é um exemplo de um model.
+
+- View: É a camada responsável por tratar a interface do usuário. Ela é responsável por exibir os dados na tela. No Laravel, as views são criadas em [resources/views](resources/views).
+
+- Controller: É a camada responsável por controlar a lógica da aplicação. Ela é responsável por receber as requisições do usuário, manipular os dados e passar os dados para a view. No Laravel, os controllers são criados em [app/Http/Controllers](app/Http/Controllers). O controller [UserController](app/Http/Controllers/UserController.php) é um exemplo de um controller.
+
+### Criando e configurando modelos
+
+Para [criar modelos](https://laravel.com/docs/11.x/eloquent#generating-model-classes, basta utilizarmos o comando `php artisan make:model NomeDoModelo`.
+
+````bash
+php artisan make:model Article
+````
+Com este comando criamos o modelo de [Artigos](app/Models/Article.php);
+
+> [!TIP]
+> Durante a criação dos modelos, podemos passar outros parâmetros para que o laravel crie automaticamente outros arquivos relacionados ao mesmo modelo, por exemplo:
+> ´php artisan make:model Article -mcf´
+> Este comando criará o Model, Migration, Controle e factory
+
+```php
+class Article extends Model
+{
+    use HasFactory, SoftDeletes; # Adicionamos o SoftDeletes para que o laravel utilize a exclusão lógica automaticamente
+
+    # Definimos as colunas que serão preenchidas automaticamente pelo Laravel durante o cadastro
+    protected $fillable = ['título', 'texto', 'autor'];
+
+}
+```
+Adicionando o SoftDeletes e os campos fillable, o nosso model está pronto para ser usado. Após isso, o Eloquent do laravel consegue fazer todas as operações do banco de dados automaticamente.
+> [!NOTE]
+> Para o soft delete funcionar, deve também adicionar o campo ´$table->SoftDeletes()´ na migration referente ao modelo.;
+
+### Criando e configurando controles
+
+### Criando e configurando views
 
 ## 🚅 Rotas <a name = "routes"></a>
 
