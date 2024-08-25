@@ -69,7 +69,7 @@ Schema::create('users', function (Blueprint $table) {
 
 ## 🔧 Configurando o Ambiente<a name = "ambiente"></a>
 
-> [!IMPORTANT] 
+> [!TIP] 
 > Será ensinado como configurar o ambiente utilizando o [Laravel Herd](https://herd.laravel.com/) no Windowns. Há diversas formas de instalar e configurar o laravel, e podem ser vistas na [documentação](https://laravel.com/docs/11.x/installation). Algumas delas são descritas abaixo:
 <br/><br/> [Utilize Docker personalizado](https://github.com/especializati/setup-docker-laravel)
 <br/> O pessoal da <i>EspecializaTI<i> tem um setup complet de docker para o lavarel, é só seguir as dicas e configurar o seu ambiente utilizando docker.
@@ -93,9 +93,38 @@ A instalação é padrão como qualquer outro aplicativo, e você não deverá t
 #### Criação de projetos no Herd
 Após a instalção do Laravel Herd, ele irá abrir na tela incial, como a figura abaixo. Nela podemos ver os serviços instalados e iniciados, e também podemos começar as configurações dos sites que o Herd gerencia, clicando na opção ***Open Sites***.<br/>
 <img width=400px src="readmeImages/Herd.png" alt="Tela iniciao do Laravel Herd">
+<br/><br/>
+Na tela de *Sites*, imagem abaixo, podemos ver todos os sites atualmente gerenciados pelo Herd a esquerda e algumas opções de gerenciamento a direita. Para a criação de novos sites, devemos clicar no botão ***+Add***,.
+<img width=400px src="readmeImages/HerdSites.png" alt="Tela de sites">
 <br/>
-Na tela de *Sites*, podemos ver todos os sites atualmente gerenciados pelo Herd a esquerda e algumas opções de gerenciamento a direita. Para a criação de novos sites, devemos clicar no botão +Add
 
+#### Criando sites no Herd
+Para criar sites, é necessário selecionar se é um projeto novo ou existente:
+<img width=400px src="readmeImages/HerdNewSite.png" alt="Tela iniciao do Laravel Herd">
+<br/><br/>
+Depois selecionar se irá utilizar alguns dos kits prontos do laravel, ***Para este tutorial iremos inicial sem nenhum starter kit***:
+<br/>
+<img width=400px src="readmeImages/HerdNewSite2.png" alt="Tela iniciao do Laravel Herd">
+<br/><br/>
+Digite o nome do projeto:
+<br/>
+<img width=400px src="readmeImages/HerdNewSite3.png" alt="Tela iniciao do Laravel Herd">
+<br/><br/>
+Aguarde a criação do projeto:
+<br/>
+<img width=400px src="readmeImages/HerdNewSite4.png" alt="Tela iniciao do Laravel Herd">
+<br/><br/>
+Após a finalização irá aparecer uma tela de sucesso:
+<br/>
+<img width=400px src="readmeImages/HerdNewSite5.png" alt="Tela iniciao do Laravel Herd">
+<br/><br/>
+E agora podemos ver e gerenciar o site pelo Herd:
+<br/>
+<img width=400px src="readmeImages/HerdNewSiteDone.png" alt="Tela iniciao do Laravel Herd">
+<br/><br/>
+Se abrirmos a url especificada na tela anterior, teremos acesso ao nosso site.
+<br/>
+<img width=400px src="readmeImages/HerdNewSite.png" alt="Tela iniciao do Laravel Herd">
 
 ## 🔏 Laravel Breeze <a name = "breeze"></a>
 
