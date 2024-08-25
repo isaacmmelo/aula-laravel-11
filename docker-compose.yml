@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+    db:
+        image: mariadb:10.5
+        container_name: 'db_laravel11'
+        restart: always
+        ports:
+        - 3310:3306
+        environment:
+            - MARIADB_USER=root
+            - MARIADB_ROOT_PASSWORD=123
+
+    adminer-laravel11:
+        image: adminer
+        restart: always
+        ports:
+        - 8082:8080

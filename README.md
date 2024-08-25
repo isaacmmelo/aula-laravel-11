@@ -94,7 +94,8 @@ A instalação é padrão como qualquer outro aplicativo, e você não deverá t
 Após a instalção do Laravel Herd, ele irá abrir na tela incial, como a figura abaixo. Nela podemos ver os serviços instalados e iniciados, e também podemos começar as configurações dos sites que o Herd gerencia, clicando na opção ***Open Sites***.<br/>
 <img width=400px src="readmeImages/Herd.png" alt="Tela iniciao do Laravel Herd">
 <br/><br/>
-Na tela de *Sites*, imagem abaixo, podemos ver todos os sites atualmente gerenciados pelo Herd a esquerda e algumas opções de gerenciamento a direita. Para a criação de novos sites, devemos clicar no botão ***+Add***,.
+Na tela de *Sites*, imagem abaixo, podemos ver todos os sites atualmente gerenciados pelo Herd a esquerda e algumas opções de gerenciamento a direita. Para a criação de novos sites, devemos clicar no botão ***+Add***.
+<br/>
 <img width=400px src="readmeImages/HerdSites.png" alt="Tela de sites">
 <br/>
 
@@ -126,9 +127,39 @@ Se abrirmos a url especificada na tela anterior, teremos acesso ao nosso site.
 <br/>
 <img width=400px src="readmeImages/HerdNewSite.png" alt="Tela iniciao do Laravel Herd">
 
+#### Criando um servidor local do MySQL com Docker
+Para a persistência de dados, iremos utilizar um servidor MySQL utilizando Docker. Para isso, disponibilei neste projeto um [arquivo composer do docker](docker-compose.yml), com uma configuração simples para a criação de um container MySQL e Adminer, para a gestão do banco de dados.
+> [!NOTE]
+> O MySQL foi configurado para a porta 3310 (com intuito de evitar conflitos com outras instalações). O usuário padrão é *root* e a senha é *123*. Para acessar o adminer utilize a porta [8082](http://localhost:8082/).
+
+Para criar o container utilize o comando:
+```bash
+docker compose up -d
+```
+Para configurar o acesso do laravel ao banco de dados, devemos atualizar as informações no arquivo [.env](.env):
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3310
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=123
+```
+
 ## 🔏 Laravel Breeze <a name = "breeze"></a>
 
-lorem ispum
+```bash
+composer require laravel/breeze
+
+php artisan breeze:install
+
+php artisan breeze:install blade --dark --pest
+
+php artisan migrate
+```
+
+<br/>
+<img width=400px src="readmeImages/breezeOk.png" alt="Tela iniciao do Laravel Herd">
 
 ## 💽 Banco de Dados e Migrations <a name="usage"></a>
 
