@@ -194,12 +194,12 @@ Podemos ver alguns comandos do artisan reslocinados a migration ao digitar `php 
 
 ```
  migrate
-  migrate:fresh             Drop all tables and re-run all migrations
-  migrate:install           Create the migration repository
-  migrate:refresh           Reset and re-run all migrations
-  migrate:reset             Rollback all database migrations
-  migrate:rollback          Rollback the last database migration
-  migrate:status            Show the status of each migration
+  migrate:fresh             Deleta todas as tabelas e cria novamente
+  migrate:install           Cria o repositorio de migrations
+  migrate:refresh           Reseta e roda todas as migrations novamente
+  migrate:reset             Faz um rollback e roda novamente todas as migrations
+  migrate:rollback          Volta a última migration executada
+  migrate:status            Mosta o status de cada migration
 ```
 
 ### Criando tabelas com Migrate
@@ -260,6 +260,7 @@ public function down(): void {
         });
     }
 ```
+Após finalizar a criação das migrations, podemos executar o comando ´php artisan migrate´ para executar as migrations e criar as novas tabelas no banco de dados.
 
 
 ### Seeders e Factory
@@ -269,6 +270,9 @@ Os seeders são utilizados para popular o banco de dados com dados de teste ou d
 As factories são utilizadas para criar modelos de forma mais rápida. Elas são definidas em arquivos PHP na pasta [database/factories](database/factories) do projeto. Elas são utilizadas pelo comando `factory()` do Laravel, que permite criar modelos de forma mais rápida e eficiente.
 
 Exemplo de uso de um factory para criar 1000 usuários de uma vez:
+<br/>
+<img width=400px src="readmeImages/migrationsOkArticles" alt="Migrations executadas">
+<br/>
 
 ```bash
 php artisan thinker #Este comando irá entrar no utilitário Thinker do laravel
