@@ -411,7 +411,7 @@ public function index() {
 <img width=400px src="readmeImages/HelloWorld2.png" alt="Route Hello World Controller">
 <br/>
 
-Uma outra opção é retornar uma view, implementamos no [controller](app/Http/Controllers/Admin/ArticleController.ph): 
+Uma outra opção é retornar uma view, implementamos no [controller](app/Http/Controllers/Admin/ArticleController.php): 
 
 ````php
 public function index() {
@@ -458,6 +458,7 @@ php artisan make:Controller Admin/UserController
 Para listagem dos usuários, começaremos com a implementação da rota, no arquivo [web.php](routes/web.php):
 
 ````php
+# Criamos uma rota com método GET e que retorna o método index da classe UserController
 Route::get('/users', [UserController::class, 'index'])->name('users');
 ````
 Implementamos o método ***index*** no [Controle de Usuários](app/Http/Controllers/Admin/UserController.php):
@@ -474,7 +475,6 @@ Implementamos o método ***index*** no [Controle de Usuários](app/Http/Controll
 Agora criamos a [view de index](resources/views/admin/users/index.blade.php) para mostrar os usuários os dados selecionados do banco de dados:
 
 No controller retornamos para a view a variável users, que contém os dados do banco de dados, assim podemos usar ela para mostrar os dados na view.
-
 
 ````html
 <!DOCTYPE html>
@@ -504,8 +504,7 @@ No controller retornamos para a view a variável users, que contém os dados do 
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
-                    <a href="{{route('user.edit', $user->id)}}">Editar</a>
-                    <a href="{{route('user.show', $user->id)}}">Detalhes</a>
+                    <a href="#">#</a>
                 </td>
             @empty
                 <tr>
@@ -540,20 +539,60 @@ Trocamos por:
     #O laravel já trabalha a paginação automaticamente, nesse caso cada página terá 20 registros
     $users = User::paginate(20);
 ````
-E acrescentamos os links de paginaçao na nossa [view de index](resources/views/admin/users/index.blade.php), logo após a tabela que mostra os dados:
+E acrescentamos os links de paginação na nossa [view de index](resources/views/admin/users/index.blade.php), logo após a tabela que mostra os dados:
 
 ````html
-    </table>
+</table>
 
-    {{ $users->links() }}
+{{ $users->links() }}
 
-    </body>
+</body>
 ````
 Assim, temos:
 
 <br/>
 <img width=400px src="readmeImages/listaUsersPaginado.png" alt="Lista usuários paginados">
 <br/>
+
+### Adicionando usuários
+
+Para adicionar novos usuários, iremos precisar de duas novas [rotas](app/Http/routes.php):
+
+````php
+# A primeira rota é acessada através da URL /users/create e chama o método create da classe UserController, ela irá mostrar o formulário de adição
+Route::get('users/create', [UserController::class, 'create'])->name('user.create');
+# A segunda rota é do tipo post e recebe a requisição POST do formulário e chama o método store da classe UserController para salvar os usuários
+Route::post('users', [UserController::class, 'store'])->name('user.store');
+````
+Após criar as rotas, devemos criar o formulário, iremos utilizar a view de [adicionar usuário](resources/views/admin/users/create.blade.php):
+
+````html
+<h1>Adicionar Usuário</h1>
+<!-- Para chamarmos rotas cadastradas, utilizamos o helper route() e colocamos o nome da rota, definido no arquivo web.php -->
+<form action="{{ route('user.store') }}" method="post">
+
+    <!-- O comando @csrf faz com que o formulário seja protegido, criando um token de segurança para envio do formulário -->
+    @csrf
+    <input type="text" name="name" id="" placeholder="Nome">
+    <input type="text" name="email" id="" placeholder="E-mail">
+    <input type="password" name="password" id="" placeholder="Senha">
+
+    <button type="submit">Enviar</button>
+
+</form>
+````
+
+E também adicionar um link para dicionar novo usuário no [index](resources/views/admin/users/index.blade.php) de usuários:
+
+````html
+<a href="{{ route('user.create') }}">Adicionar Usuário</a>
+````
+
+
+
+### Atualizando usuários
+
+### Exibindo detalhes e deletando usuário
 
 
 ## 👍 Validação <a name = "validacao"></a>

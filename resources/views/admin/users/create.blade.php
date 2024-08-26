@@ -8,9 +8,7 @@
 <body>
 
     <h1>Adicionar Usuário</h1>
-    @if(session()->has('message'))
-        <h3 style="color: red">{{ session()->get('message') }}</h3>
-    @endif
+
     <form action="{{ route('user.store') }}" method="post">
 
         @csrf

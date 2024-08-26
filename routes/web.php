@@ -5,16 +5,14 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('users/create', [UserController::class, 'create'])->name('user.create');
 Route::delete('users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
 Route::get('users/{user}', [UserController::class, 'show'])->name('user.show');
 Route::put('users/{user}', [UserController::class, 'update'])->name('user.update');
 Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::post('users', [UserController::class, 'store'])->name('user.store');
-Route::get('users/create', [UserController::class, 'create'])->name('user.create');
+
 Route::get('users', [UserController::class, 'index'])->name('user.index');
-
-Route::get('/saudacao', [ArticleController::class, 'index'])->name('saudacao');
-
 
 Route::get('/', function () {
     return view('welcome');

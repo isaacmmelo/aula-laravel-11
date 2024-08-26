@@ -18,8 +18,8 @@ class UserController extends Controller
         return view('admin.users.index', compact('users'));
     }
 
-    public function create(Request $request){
-        return view('admin.users.create');
+    public function create(){
+        return 'teste';
     }
 
     public function store(Request $request){
